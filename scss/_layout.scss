@@ -1,0 +1,420 @@
+/////////////////////////////////////////////////////////////////////////////
+// Header
+.header {
+  min-height: 100vh;
+  background-image: url(../images/desktop/image-header.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  @include respond(tab-pot-min) {
+    background-image: url(../images/mobile/image-header.jpg);
+  }
+
+  &__text-box {
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    position: absolute;
+    bottom: 65%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__img-box {
+    position: absolute;
+    bottom: 42%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: updown 0.7s infinite;
+
+    @include respond(tab-pot-min) {
+      bottom: 34%;
+    }
+  }
+
+  &__icon-arrow {
+    display: block;
+    width: 3.2rem;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.8rem;
+  padding: 3.2rem 4rem;
+
+  &__logo {
+    width: 16rem;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 4.8rem;
+
+    @include respond(tab-pot-min) {
+      position: absolute;
+      top: 15%;
+      left: 5%;
+      background-color: var(--color-white);
+
+      flex-direction: column;
+      gap: 2.4rem;
+      width: 90%;
+      padding: 4.8rem;
+      transition: all 0.2s;
+
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10;
+
+      &::after {
+        content: "";
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%) rotate(45deg);
+        position: absolute;
+        background-image: linear-gradient(
+          45deg,
+          #ffffff 0%,
+          #ffffff 50%,
+          transparent 50%
+        );
+        height: 5rem;
+        width: 5rem;
+      }
+    }
+  }
+
+  &__link:link,
+  &__link:visited {
+    text-decoration: none;
+    color: var(--color-white);
+
+    @include respond(tab-pot-min) {
+      color: var(--color-neutral-blue-grey-1);
+    }
+  }
+
+  &__btn {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: var(--font-family-fraunces);
+    border: none;
+    background: none;
+    background-color: var(--color-white);
+    color: var(--color-neutral-blue-dark);
+    padding: 1.2rem 2.4rem;
+    border-radius: 2.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    @include respond(tab-pot-min) {
+      background-color: var(--color-primary-yellow);
+    }
+
+    &:hover {
+      color: var(--color-white);
+      background-color: rgba(255, 255, 255, 0.255);
+
+      @include respond(tab-pot-min) {
+        background-color: rgba(250, 212, 0, 0.255);
+        color: var(--color-neutral-blue-dark);
+      }
+    }
+
+    &:active {
+      transform: translateY(0.2rem);
+    }
+  }
+
+  &__menu {
+    width: 3.6rem;
+    cursor: pointer;
+    display: none;
+
+    @include respond(tab-pot-min) {
+      display: block;
+    }
+  }
+}
+
+.active .nav__list {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+///////////////////////////////////////////////////////////////////////////
+// SECTION FEATURES
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+
+  @include respond(tab-pot-min) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  &__text-box {
+    background-color: var(--color-white);
+    padding: 0 12rem 0rem 14rem;
+
+    @include respond(tab-land) {
+      padding: 0 9.6rem;
+    }
+
+    @include respond(tab-pot) {
+      padding: 0 6.4rem;
+    }
+
+    @include respond(tab-pot-min) {
+      padding: 3.2rem;
+      text-align: center;
+    }
+  }
+
+  &__text {
+    &--normal {
+      color: var(--color-neutral-blue-grey-2);
+      font-size: 1.8rem;
+      margin-bottom: 3.2rem;
+
+      @include respond(tab-pot) {
+        font-size: 1.6rem;
+      }
+    }
+
+    &--graphic {
+      font-size: 1.6rem;
+      color: var(--color-primary-cyan-1);
+
+      @include respond(tab-pot) {
+        font-size: 1.4rem;
+      }
+    }
+
+    &--photography {
+      font-size: 1.6rem;
+      color: var(--color-primary-dark-blue);
+
+      @include respond(tab-pot) {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  &__img-box {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &__text {
+      position: absolute;
+      top: 60%;
+      text-align: center;
+      width: 50%;
+
+      @include respond(tab-land) {
+        width: 60%;
+      }
+
+      @include respond(tab-pot) {
+        width: 75%;
+      }
+
+      @include respond(tab-pot-min) {
+        width: 90%;
+      }
+    }
+
+    &--1 {
+      @include respond(tab-pot-min) {
+        grid-row: 1;
+      }
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+  }
+}
+
+// Button
+
+.btn-learn-more:link,
+.btn-learn-more:visited {
+  position: relative;
+  font-family: var(--font-family-fraunces);
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-neutral-blue-dark);
+  z-index: 1;
+}
+
+.bottom-line {
+  content: "";
+  position: absolute;
+  bottom: -0.4rem;
+  left: -0.75rem;
+  height: 1rem;
+  width: 115%;
+  border-radius: 1.5rem;
+  z-index: -1;
+  transition: all 0.2s;
+}
+
+.btn-learn-more {
+  &--yellow::after {
+    @extend .bottom-line;
+    background-color: rgba(250, 212, 0, 0.259);
+  }
+
+  &--yellow:hover::after {
+    background-color: var(--color-primary-yellow);
+  }
+
+  &--red::after {
+    @extend .bottom-line;
+    background-color: rgba(254, 120, 103, 0.259);
+  }
+
+  &--red:hover::after {
+    background-color: var(--color-primary-soft-red);
+  }
+}
+
+/////////////////////////////////////////////////////////////////////
+// TESTIMONIALS SECTION
+
+.testimonials {
+  padding: 14rem 10vw;
+  background-color: var(--color-white);
+
+  @include respond(tab-land) {
+    padding: 14rem 7vw;
+  }
+
+  &-box {
+    display: flex;
+    gap: 3.2rem;
+
+    @include respond(tab-pot-min) {
+      flex-direction: column;
+    }
+  }
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__img {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+
+    margin-bottom: 4.8rem;
+  }
+
+  &__text {
+    font-size: 1.8rem;
+    text-align: center;
+    color: var(--color-neutral-blue-grey-2);
+
+    margin-bottom: 6.4rem;
+  }
+
+  &__client-name {
+    font-family: var(--font-family-fraunces);
+    font-weight: 700;
+    font-size: 1.8rem;
+
+    margin-bottom: 0.4rem;
+  }
+
+  &__client-job {
+    font-size: 1.4rem;
+    color: var(--color-neutral-blue-grey-3);
+  }
+}
+
+/////////////////////////////////////////////////////////////////////
+// GALLERY
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  &__img {
+    width: 100%;
+  }
+
+  @include respond(tab-pot-min) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/////////////////////////////////////////////////////////////////////
+// FOOTER
+
+.footer {
+  background-color: lighten(hsl(168, 34%, 41%), 23%);
+  padding: 7.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__logo {
+    fill: var(--color-primary-cyan-1);
+    transform: scale(1.4);
+
+    margin-bottom: 4.4rem;
+
+    @include respond(tab-pot) {
+      transform: scale(1.2);
+      margin-bottom: 3.2rem;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 4.8rem;
+  }
+
+  &__nav-list {
+    margin-bottom: 8rem;
+
+    @include respond(tab-pot) {
+      margin-bottom: 6.4rem;
+    }
+  }
+
+  &__nav-link:link,
+  &__nav-link:visited {
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: var(--color-primary-cyan-2);
+  }
+
+  .social-icon-box {
+    display: flex;
+    gap: 2.4rem;
+  }
+
+  &__social-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+}
